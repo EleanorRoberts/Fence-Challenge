@@ -5,7 +5,7 @@
  * @param Int $num_railings
  * @return Int
  */
-function calcFence(Int $num_posts, Int $num_railings) : Int {
+function calcFence(Int $num_posts, Int $num_railings) : Float {
     if ($num_posts + 1 === $num_railings) {
         // If there is one more post than railing, use all
         return ($num_railings*1.5) + ($num_posts*0.1);
@@ -21,6 +21,10 @@ function calcFence(Int $num_posts, Int $num_railings) : Int {
     }
 }
 
+/** Based on the length of fence, determine the supplies you would need
+ * @param Int $fence_length
+ * @return array
+ */
 function calcSupplies(Int $fence_length) : Array {
     // What supplies are being used
     $railing = 150;

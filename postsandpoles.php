@@ -9,10 +9,6 @@ require_once 'functions.php';
 <head>
     <meta charset="UTF-8" />
     <title>Number of Railings Challenge</title>
-<!---->
-<!--    <link rel="stylesheet" href="normalize.css" />-->
-<!--    <link rel="stylesheet" href="xxx.css" />-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
 </head>
 <body>
 <h1>The Fence Challenge</h1>
@@ -29,7 +25,7 @@ require_once 'functions.php';
     <?php
     if (isset($_GET['posts']) && isset($_GET['railings'])) {
         //if posts and railings are set
-        echo "<p>Length of fence: " . calcFence((int)$_GET['posts'], (int)$_GET['railings']) . "m </p><br />";
+        echo "<p>Length of fence: " . calcFence($_GET['posts'], $_GET['railings']) . "m </p><br />";
     }
     ?>
 
@@ -48,10 +44,6 @@ require_once 'functions.php';
     }
     ?>
 
-    <ul>
-        <li>Code must be Unit Tested!</li>
-        <li>Code must use functions or OOP (classes)</li>
-    </ul>
 </div>
 </body>
 </html>
