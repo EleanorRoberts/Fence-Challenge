@@ -1,35 +1,6 @@
 <?php
-$railing = 150;
-$post = 10;
+require_once 'functions.php';
 
-$length_of_fence = 810;
-$num_of_railings = 6;
-$num_of_posts = 7;
-
-//to calculate the length of fence based on number of railings and posts
-$end_of_fence = ($num_of_railings*$railing) + ($num_of_posts*$post) + $post;
-echo 'Length of fence: ' . $end_of_fence/100 . "m <br />";
-
-
-//to calculate the number of posts and railings based on length of fence
-$post_and_railing = $post + $railing;
-$number_of_both = ($length_of_fence - $post) / $post_and_railing;
-$end_railings = ceil($number_of_both);
-$end_posts = $end_railings + 1;
-echo "Number of railings: " . $end_railings . '<br />';
-echo "Number of posts: " . $end_posts;
-
-
-
-function calculateFence(Int $num_posts, Int $num_railings) : Int {
-    if ($num_posts + 1 === $num_railings) {
-        return ($num_railings*150) + ($num_of_posts*10);
-    } elseif ($num_posts > $num_railings) {
-        return ($num_railings*150) + (($num_railings + 1)*10);
-    } else {
-        return (($num_posts - 1)*150) + ($num_of_posts*10);
-    }
-}
 
 ?>
 
@@ -46,8 +17,41 @@ function calculateFence(Int $num_posts, Int $num_railings) : Int {
 <body>
 <h1>The Fence Challenge</h1>
 <div>
-    <p></p>
+    <form>
+        <h2>How Long Will Your Fence Be?</h2>
+        <label for="posts">Posts</label>
+        <input name="posts" type="number" /><br /><br />
+        <label for="railings">Railings</label>
+        <input name="railings" type="number" /><br /><br />
+        <input type="submit" />
+    </form>
 
+    <?php
+    if (isset($_GET['posts']) && isset($_GET['railings'])) {
+        //if posts and railings are set
+        echo "<p>Length of fence: " . calcFence((int)$_GET['posts'], (int)$_GET['railings']) . "m </p><br />";
+    }
+    ?>
+
+    <form>
+        <h2>How Much Do You Need for Your Fence?</h2>
+        <label for="fence">Fence Length(m)</label>
+        <input name="fence" type="number" /><br /><br />
+        <input type="submit" />
+    </form>
+
+    <?php
+    if (isset($_GET['fence'])) {
+        $fence = $_GET['fence'];
+        $supplies = calcSupplies($_GET['fence']);
+        echo "<p>Number of Posts: " . $supplies['posts'] . "<br />Number of Railings: " . $supplies['railings'] . "</p><br />";
+    }
+    ?>
+
+    <ul>
+        <li>Code must be Unit Tested!</li>
+        <li>Code must use functions or OOP (classes)</li>
+    </ul>
 </div>
 </body>
 </html>
