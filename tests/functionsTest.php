@@ -7,6 +7,7 @@ use PHPUnit\Framework\TestCase;
 
 class functionsTest extends TestCase
 {
+    // calcFence tests
     // test success, correct railings to posts
     public function testSuccessCalcFenceRightNumber()
     {
@@ -88,7 +89,7 @@ class functionsTest extends TestCase
     // test inputting wrong type of data for posts
     public function testMalformedCalcFencePosts()
     {
-        $inputa = "Hello my lovely";
+        $inputa = "Nova is superior to all";
         $inputb = 300;
 
         $this->expectException(TypeError::class);
@@ -109,13 +110,38 @@ class functionsTest extends TestCase
     }
 
 
-//
-//    public function testMalformedGreeter()
-//    {
-//        $input = [0];
-//
-//        $this->expectException(TypeError::class);
-//
-//        $case = loginButton($input);
-//    }
+    //calcSupplies tests
+    // test success
+    public function testSuccessCalcSupplies()
+    {
+        $expected = ['railings' => 3,'posts' => 4];
+
+        $input = 4;
+
+        $case = CalcSupplies($input);
+
+        $this->assertEquals($expected, $case);
+    }
+
+    // test failure, correct railings to posts
+    public function testFailureCalcSupplies()
+    {
+        $expected = ['railings' => 0,'posts' => 0];
+
+        $input = -4;
+
+        $case = CalcSupplies($input);
+
+        $this->assertEquals($expected, $case);
+    }
+
+    // test failure, correct railings to posts
+    public function testMalformedCalcSupplies()
+    {
+        $input = "Yo pudding!";
+
+        $this->expectException(TypeError::class);
+
+        $case = CalcSupplies($input);
+    }
 }

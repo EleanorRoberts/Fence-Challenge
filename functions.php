@@ -26,6 +26,10 @@ function calcFence(Int $num_posts, Int $num_railings) : Float {
  * @return array
  */
 function calcSupplies(Int $fence_length) : Array {
+    // if the fence length is less than 0, no supplies required
+    if ($fence_length < 0) {
+        return ['railings' => 0, 'posts' => 0];
+    }
     // What supplies are being used
     $railing = 150;
     $post = 10;
