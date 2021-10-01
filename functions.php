@@ -3,22 +3,18 @@
 /** Based on the number of railings and posts, determine the largest complete fence that could be made
  * @param Int $num_posts
  * @param Int $num_railings
- * @return Int
+ * @return Float
  */
 function calcFence(Int $num_posts, Int $num_railings) : Float {
-    if ($num_posts + 1 === $num_railings) {
-        // If there is one more post than railing, use all
-        return ($num_railings*1.5) + ($num_posts*0.1);
-    } elseif ($num_posts < 2 || $num_railings < 1) {
+    if ($num_posts < 2 || $num_railings < 1) {
         //if there aren't enough materials
         return 0;
     } elseif ($num_posts > $num_railings) {
         //if there are more posts than railings, base fence on railing number
         return ($num_railings*1.5) + (($num_railings + 1)*0.1);
-    } else {
-        // otherwise, (if there are more railings than posts) base on posts
-        return (($num_posts - 1)*1.5) + ($num_posts*0.1);
     }
+    // otherwise, (if there are more railings than posts) base on posts
+    return (($num_posts - 1)*1.5) + ($num_posts*0.1);
 }
 
 /** Based on the length of fence, determine the supplies you would need

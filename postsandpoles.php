@@ -15,10 +15,10 @@ require_once 'functions.php';
 <div>
     <form>
         <h2>How Long Will Your Fence Be?</h2>
-        <label for="posts">Posts</label>
-        <input name="posts" type="number" /><br /><br />
-        <label for="railings">Railings</label>
-        <input name="railings" type="number" /><br /><br />
+        <label for="posts">Posts
+            <input name="posts" type="number" /></label><br /><br />
+        <label for="railings">Railings
+            <input name="railings" type="number" /></label><br /><br />
         <input type="submit" />
     </form>
 
@@ -31,14 +31,13 @@ require_once 'functions.php';
 
     <form>
         <h2>How Much Do You Need for Your Fence?</h2>
-        <label for="fence">Fence Length(m)</label>
-        <input name="fence" type="number" /><br /><br />
+        <label for="fence">Fence Length(m)
+            <input name="fence" type="number"></label><br /><br />
         <input type="submit" />
     </form>
 
     <?php
     if (isset($_GET['fence'])) {
-        $fence = $_GET['fence'];
         $supplies = calcSupplies($_GET['fence']);
         echo "<p>Number of Posts: " . $supplies['posts'] . "<br />Number of Railings: " . $supplies['railings'] . "</p><br />";
     }
